@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -27,17 +27,8 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
-      <table>
-    <tr>
-        <th>Name</th>
-        <th>Grade</th>
-    </tr>
-    <tr>
-        <td>MAYANK</td>
-         <td>A</td>
-    </tr>
-  </table>
+      </p> */}
+      
     </>
   )
 }
