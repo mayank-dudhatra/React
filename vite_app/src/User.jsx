@@ -1,5 +1,6 @@
 import './Style.css'
 import Probo from './assets/probo-3.png'
+import Women from './assets/women-think-1.avif'
 import Language from './assets/language-change.avif'
 import video from './assets/video.png'
 import list from './assets/event-list-table-1.avif'
@@ -69,7 +70,7 @@ function User () {
     </div>
     </div>
     <div className="subpart-2">
-        <img style={{ height: "570px", width: "590px" }} src="women-think-1.avif" alt="women-thinking" />
+        <img style={{ height: "570px", width: "590px" }} src={Women} alt="women-thinking" />
     </div>
 </div>
 
