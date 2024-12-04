@@ -1,28 +1,25 @@
 # Use the official Node.js image as the base image
-FROM node:18-alpine
+FROM node:18-alpine AS build
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
+# Copy dependency files and install dependencies
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application to the container
+# Copy the application code and build
 COPY . .
-
-# Build the application
 RUN npm run build
 
-# Use an Nginx server to serve the built app
+# Use Nginx to serve the built app
 FROM nginx:alpine
-# Copy the built files to Nginx's default HTML directory
-COPY --from=0 /app/dist /usr/share/nginx/html
+
+# Copy built files to Nginx's default HTML directory
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Redirect logs and start the Nginx server
+CMD ["sh", "-c", "ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log && nginx -g 'daemon off;'"]
